@@ -64,7 +64,6 @@ public class UserController {
         }
     }
 
-    // Nguyễn Công Quý - 22110403
     @PostMapping("/login")
     ApiResponse<UserResponse> login(@RequestBody LoginRequest loginRequest) {
         return ApiResponse.<UserResponse>builder()
@@ -76,7 +75,6 @@ public class UserController {
     }
 
 
-    // Nguyễn Duy Phong - 22110395
     @PostMapping("/verify-user")
     ApiResponse<String> verifyUser(@RequestBody VerifyRequest request) {
         int status = authService.verifyUser(request.getEmail(), request.getOtp());

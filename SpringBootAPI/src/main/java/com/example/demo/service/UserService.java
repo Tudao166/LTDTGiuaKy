@@ -54,8 +54,6 @@ public class UserService {
                 .build();
     }
 
-    // Nguyễn Công Quý - 22110403
-    // Nguyễn Duy Phong - 22110395
     public UserResponse register(RegisterRequest request) {
 
         if (userRepository.findByEmail(request.getEmail()) != null) {

@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8089
   servlet:
     context-path: /api/v1
 
@@ -7,7 +7,7 @@ spring:
   datasource:
     url: ${DBMS_URL:jdbc:mysql://localhost:3306/food_db}
     username: ${DBMS_USERNAME:root}
-    password: ${DBMS_PASSWORD:123456}
+    password: ${DBMS_PASSWORD:1234567}
     driverClassName: com.mysql.cj.jdbc.Driver
     hikari:
       minimum-idle: 5

@@ -7,6 +7,7 @@ import com.example.demo.model.CategoryResponse;
 import com.example.demo.model.GetCategoryRequest;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.UserRepository;
+import java.util.Comparator;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -57,11 +58,12 @@ public class CategoryService {
                 .collect(Collectors.toList());
     }
 
-    public List<CategoryResponse> getAllCategoriesByUsername(String email) {
-        List<CategoryEntity> categoryEntities = categoryRepository.findCategoriesByUsername(email);
+    public List<CategoryResponse> getAllCategoriesByDesc() {
+        List<CategoryEntity> categoryEntities = categoryRepository.findAll();
         return categoryEntities.stream()
-                .map(this::mapper)
-                .collect(Collectors.toList());
+            .sorted(Comparator.comparing(CategoryEntity::getId).reversed()) // Sắp xếp giảm dần theo ID
+            .map(this::mapper)
+            .collect(Collectors.toList());
     }
 
     public boolean addCategoryForUser(GetCategoryRequest request) {

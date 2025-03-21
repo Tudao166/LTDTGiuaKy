@@ -16,7 +16,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("category")
+@RequestMapping("/category")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -36,7 +36,7 @@ public class CategoryController {
     }
 
 
-    @PostMapping("category-for-user")
+    @PostMapping("/category-for-user")
     ApiResponse<Boolean> addCategoryForUser(@RequestBody GetCategoryRequest request) {
         Boolean response = categoryService.addCategoryForUser(request);
 
@@ -49,7 +49,7 @@ public class CategoryController {
                 .build();
     }
 
-    @GetMapping("all-category")
+    @GetMapping("/all-category")
     public ApiResponse<List<CategoryResponse>> getCategory() {
         List<CategoryResponse> response = categoryService.getAllCategories();
 
@@ -60,11 +60,12 @@ public class CategoryController {
                 .build();
     }
 
-    @GetMapping("last-product")
-    public ApiResponse<List<CategoryResponse>> getProductByUser(@RequestParam String username) {
-        List<CategoryResponse> response = categoryService.getAllCategoriesByUsername(username);
+    @GetMapping("/last-product")
+    public ApiResponse<List<CategoryResponse>> getProductByUser() {
+        List<CategoryResponse> response = categoryService.getAllCategoriesByDesc();
 
         return ApiResponse.<List<CategoryResponse>>builder()
+
                 .message("Fetched categories successfully!")
                 .code(200)
                 .result(response)

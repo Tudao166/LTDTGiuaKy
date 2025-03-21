@@ -1,14 +1,11 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity(name = "tbl_category")
